@@ -35,5 +35,8 @@
         "Virginica",
         "Wilcoxon",
         "Worldometers"
+    ],
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "main"
     ]
 }
