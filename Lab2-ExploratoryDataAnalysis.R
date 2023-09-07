@@ -2,7 +2,7 @@
 # Lab 2: Exploratory Data Analysis ----
 #
 # Course Code: BBT4206
-# Course Name: Business Intelligence II
+# Course Name: Business Intelligence II Ann
 # Semester Duration: 21st August 2023 to 28th November 2023
 #
 # Lecturer: Allan Omondi
@@ -94,8 +94,10 @@ require("languageserver")
 
 ## STEP 3. Load the downloaded sample datasets ----
 # Load the datasets
-iris_dataset <- read.csv("data/iris.data", header = FALSE,
-                         stringsAsFactors = TRUE)
+iris_dataset <- read.csv("data/iris.data",
+  header = FALSE,
+  stringsAsFactors = TRUE
+)
 
 # The following code (optional) can be used to name the attributes in the
 # iris_dataset:
@@ -196,28 +198,40 @@ sapply(PimaIndiansDiabetes, class)
 # than numeric variables, e.g., counting the number of male and female
 # participants instead of counting the frequency of each participant’s height.
 boston_housing_freq <- BostonHousing$chas
-cbind(frequency = table(boston_housing_freq),
-      percentage = prop.table(table(boston_housing_freq)) * 100)
+cbind(
+  frequency = table(boston_housing_freq),
+  percentage = prop.table(table(boston_housing_freq)) * 100
+)
 
 crop_dataset_density_freq <- crop_dataset$density
-cbind(frequency = table(crop_dataset_density_freq),
-      percentage = prop.table(table(crop_dataset_density_freq)) * 100)
+cbind(
+  frequency = table(crop_dataset_density_freq),
+  percentage = prop.table(table(crop_dataset_density_freq)) * 100
+)
 
 crop_dataset_block_freq <- crop_dataset$block
-cbind(frequency = table(crop_dataset_block_freq),
-      percentage = prop.table(table(crop_dataset_block_freq)) * 100)
+cbind(
+  frequency = table(crop_dataset_block_freq),
+  percentage = prop.table(table(crop_dataset_block_freq)) * 100
+)
 
 crop_dataset_fertilizer_freq <- crop_dataset$fertilizer
-cbind(frequency = table(crop_dataset_fertilizer_freq),
-      percentage = prop.table(table(crop_dataset_fertilizer_freq)) * 100)
+cbind(
+  frequency = table(crop_dataset_fertilizer_freq),
+  percentage = prop.table(table(crop_dataset_fertilizer_freq)) * 100
+)
 
 iris_dataset_freq <- iris_dataset$V5
-cbind(frequency = table(iris_dataset_freq),
-      percentage = prop.table(table(iris_dataset_freq)) * 100)
+cbind(
+  frequency = table(iris_dataset_freq),
+  percentage = prop.table(table(iris_dataset_freq)) * 100
+)
 
 pima_indians_diabetes_freq <- PimaIndiansDiabetes$diabetes
-cbind(frequency = table(pima_indians_diabetes_freq),
-      percentage = prop.table(table(pima_indians_diabetes_freq)) * 100)
+cbind(
+  frequency = table(pima_indians_diabetes_freq),
+  percentage = prop.table(table(pima_indians_diabetes_freq)) * 100
+)
 
 ## Measures of Central Tendency ----
 ### STEP 8. Calculate the mode ----
@@ -241,7 +255,7 @@ print(iris_dataset_mode)
 
 pima_indians_diabetes_mode <- names(table(PimaIndiansDiabetes$diabetes))[
   which(table(PimaIndiansDiabetes$diabetes) ==
-          max(table(PimaIndiansDiabetes$diabetes)))
+    max(table(PimaIndiansDiabetes$diabetes)))
 ]
 print(pima_indians_diabetes_mode)
 
@@ -305,10 +319,10 @@ if (!is.element("e1071", installed.packages()[, 1])) {
 }
 require("e1071")
 
-sapply(BostonHousing[, -4],  kurtosis, type = 2)
-sapply(crop_dataset[, 4],  kurtosis, type = 2)
-sapply(iris_dataset[, 1:4],  kurtosis, type = 2)
-sapply(PimaIndiansDiabetes[, 1:8],  kurtosis, type = 2)
+sapply(BostonHousing[, -4], kurtosis, type = 2)
+sapply(crop_dataset[, 4], kurtosis, type = 2)
+sapply(iris_dataset[, 1:4], kurtosis, type = 2)
+sapply(PimaIndiansDiabetes[, 1:8], kurtosis, type = 2)
 
 ### STEP 13. Measure the skewness of each variable ----
 
@@ -322,10 +336,10 @@ sapply(PimaIndiansDiabetes[, 1:8],  kurtosis, type = 2)
 # 2.	Skewness above 0.4 implies a positive skew; a right-skewed distribution.
 # 3.	Skewness below -0.4 implies a negative skew; a left-skewed distribution.
 
-sapply(BostonHousing[, -4],  skewness, type = 2)
-sapply(crop_dataset[, 4],  skewness, type = 2)
-sapply(iris_dataset[, 1:4],  skewness, type = 2)
-sapply(PimaIndiansDiabetes[, 1:8],  skewness, type = 2)
+sapply(BostonHousing[, -4], skewness, type = 2)
+sapply(crop_dataset[, 4], skewness, type = 2)
+sapply(iris_dataset[, 1:4], skewness, type = 2)
+sapply(PimaIndiansDiabetes[, 1:8], skewness, type = 2)
 
 # Note, executing:
 # skewness(BostonHousing$crim, type=2) # nolint
@@ -482,7 +496,8 @@ summary(crop_dataset_one_way_anova)
 # (two independent variables):
 
 crop_dataset_additive_two_way_anova <- aov(yield ~ fertilizer + density, # nolint
-                                           data = crop_dataset)
+  data = crop_dataset
+)
 summary(crop_dataset_additive_two_way_anova)
 
 # Specifying an asterisk (*) instead of a plus (+) between the two independent
@@ -498,7 +513,8 @@ summary(crop_dataset_additive_two_way_anova)
 # fertilizer and density have an interaction effect:
 
 crop_dataset_interactive_two_way_anova <- aov(yield ~ fertilizer * density, # nolint
-                                              data = crop_dataset)
+  data = crop_dataset
+)
 summary(crop_dataset_interactive_two_way_anova)
 
 # This can be interpreted as follows:
@@ -520,10 +536,12 @@ summary(crop_dataset_interactive_two_way_anova)
 # and not other variables that are not part of the research.
 
 # Execute the following to add the “block” variable:
-crop_dataset_interactive_two_way_anova_with_block <- aov(yield ~ # nolint
-                                                           fertilizer + density
-                                                           + block,
-                                                         data = crop_dataset)
+crop_dataset_interactive_two_way_anova_with_block <- aov(
+  yield ~ # nolint
+    fertilizer + density
+    + block,
+  data = crop_dataset
+)
 summary(crop_dataset_interactive_two_way_anova_with_block)
 
 # This can be interpreted as follows:
@@ -781,13 +799,17 @@ pairs(block ~ ., data = crop_dataset, col = crop_dataset$block)
 pairs(density ~ ., data = crop_dataset, col = crop_dataset$density)
 pairs(fertilizer ~ ., data = crop_dataset, col = crop_dataset$fertilizer)
 pairs(V5 ~ ., data = iris_dataset, col = iris_dataset$V5)
-pairs(diabetes ~ ., data = PimaIndiansDiabetes,
-      col = PimaIndiansDiabetes$diabetes)
+pairs(diabetes ~ .,
+  data = PimaIndiansDiabetes,
+  col = PimaIndiansDiabetes$diabetes
+)
 
 # Alternatively, the ggcorrplot package can be used to make the plots more
 # appealing:
-ggplot(PimaIndiansDiabetes,
-       aes(x = age, y = pregnant, shape = diabetes, color = diabetes)) +
+ggplot(
+  PimaIndiansDiabetes,
+  aes(x = age, y = pregnant, shape = diabetes, color = diabetes)
+) +
   geom_point() +
   geom_smooth(method = lm)
 
@@ -799,8 +821,10 @@ if (!is.element("caret", installed.packages()[, 1])) {
 }
 require("caret")
 featurePlot(x = iris_dataset[, 1:4], y = iris_dataset[, 5], plot = "box")
-featurePlot(x = PimaIndiansDiabetes[, 1:8], y = PimaIndiansDiabetes[, 9],
-            plot = "box")
+featurePlot(
+  x = PimaIndiansDiabetes[, 1:8], y = PimaIndiansDiabetes[, 9],
+  plot = "box"
+)
 
 # **Deinitialization: Create a snapshot of the R environment ----
 # Lastly, as a follow-up to the initialization step, record the packages
