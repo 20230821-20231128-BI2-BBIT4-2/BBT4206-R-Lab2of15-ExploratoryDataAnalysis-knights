@@ -2,7 +2,7 @@
 # Lab 2: Exploratory Data Analysis ----
 #
 # Course Code: BBT4206
-# Course Name: Business Intelligence II
+# Course Name: Business Intelligence II Ann
 # Semester Duration: 21st August 2023 to 28th November 2023
 #
 # Lecturer: Allan Omondi
