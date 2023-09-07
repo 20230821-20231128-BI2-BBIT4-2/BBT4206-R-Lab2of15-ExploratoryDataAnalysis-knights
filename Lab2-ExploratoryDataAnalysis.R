@@ -785,7 +785,7 @@ pairs(diabetes ~ ., data = PimaIndiansDiabetes,
       col = PimaIndiansDiabetes$diabetes)
 
 # Alternatively, the ggcorrplot package can be used to make the plots more
-# appealing:
+# appealling:
 ggplot(PimaIndiansDiabetes,
        aes(x = age, y = pregnant, shape = diabetes, color = diabetes)) +
   geom_point() +
