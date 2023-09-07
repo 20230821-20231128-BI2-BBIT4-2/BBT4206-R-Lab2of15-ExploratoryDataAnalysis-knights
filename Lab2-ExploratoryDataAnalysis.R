@@ -31,7 +31,7 @@ if (!is.element("renv", installed.packages()[, 1])) {
   install.packages("renv", dependencies = TRUE)
 }
 require("renv")
-
+    
 # Use renv::init() to initialize renv in a new or existing project.
 
 # The prompt received after executing renv::init() is as shown below:
