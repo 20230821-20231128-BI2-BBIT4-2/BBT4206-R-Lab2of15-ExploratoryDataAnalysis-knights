@@ -5,7 +5,7 @@
 # Course Name: Business Intelligence II
 # Semester Duration: 21st August 2023 to 28th November 2023
 #
-# Lecturer: Allan Omondi
+# Lecturer: Dr. Allan Omondi
 # Contact: aomondi [at] strathmore.edu
 #
 # Note: The lecture contains both theory and practice. This file forms part of
@@ -31,7 +31,7 @@ if (!is.element("renv", installed.packages()[, 1])) {
   install.packages("renv", dependencies = TRUE)
 }
 require("renv")
-
+    
 # Use renv::init() to initialize renv in a new or existing project.
 
 # The prompt received after executing renv::init() is as shown below:
