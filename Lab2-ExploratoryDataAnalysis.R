@@ -54,11 +54,13 @@ renv::init()
 # file, e.g., "BBT4206-R.Rproj" in the case of this project. Then
 # navigate to the "Environments" tab and select "Use renv with this project".
 
+.libPaths()
 # As you continue to work on your project, you can install and upgrade
 # packages, using either:
 # install.packages() and update.packages or
 # renv::install() and renv::update()
 
+lapply(.libPaths(), list.files)
 # You can also clean up a project by removing unused packages using the
 # following command: renv::clean()
 
@@ -656,6 +658,7 @@ par(mfrow = c(1, 4))
 for (i in 1:4) {
   boxplot(iris_dataset[, i], main = names(iris_dataset)[i])
 }
+
 
 # Execute the following code to create histograms for the “PimaIndiansDiabetes”
 # dataset:
