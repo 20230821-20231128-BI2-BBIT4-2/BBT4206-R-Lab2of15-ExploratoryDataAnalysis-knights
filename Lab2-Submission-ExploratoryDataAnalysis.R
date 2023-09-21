@@ -55,6 +55,7 @@ summary(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
 ### STEP 10. Measure the standard deviation of each variable ----
 sapply(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[, c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99)], sd)
 
+
 ### STEP 11. Measure the variance of each variable ----
 sapply(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[, c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99)], var)
 
@@ -80,7 +81,29 @@ summary(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_one_way_anova)
 X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_two_way_anova <- aov( gender ~ goal_oriented * take_quizzes_and_use_results, data = X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
 summary(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_two_way_anova)
 
-### STEP 17. Create Histograms for Each Numeric Attribute ----
-# Histograms help in determining whether an attribute has a Gaussian
-# distribution. They can also be used to identify the presence of outliers.
-# Check data types of the columns you want to plot
+### STEP 19. Create Bar Plots for Each Categorical Attribute ----
+par(mfrow = c(1, 3))
+for (i in 1:3) {
+  barplot(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[, i]), main = names(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)[i])
+}
+### STEP 20. Create a Missingness Map to Identify Missing Data ----
+if (!is.element("Amelia", installed.packages()[, 1])) {
+  install.packages("Amelia", dependencies = TRUE)
+}
+require("Amelia")
+
+missmap(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset, col = c("red", "grey"), legend = TRUE)
+
+### STEP 21. Create a Correlation Plot ----
+
+{plot.new(); dev.off()}
+
+if (!is.element("ggcorrplot", installed.packages()[, 1])) {
+  install.packages("ggcorrplot", dependencies = TRUE)
+}
+require("ggcorrplot")
+corrplot(cor(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[, c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99)]), method = "circle")
+
+
+### STEP 23. Create Multivariate Box and Whisker Plots by Class ----
+featurePlot(x = X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[, c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99)], y = X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[, 100], plot = "box")
