@@ -126,6 +126,7 @@ if (!is.element("mlbench", installed.packages()[, 1])) {
 require("mlbench")
 
 data("PimaIndiansDiabetes")
+
 data("BostonHousing")
 
 # Dimensions ----
