@@ -6,6 +6,7 @@ lapply(.libPaths(), list.files)
 renv::restore()
 
 ## STEP 2: Download sample datasets ----
+#Done
 ## STEP 3. Load the downloaded sample datasets ----
 # Load the datasets
 library(readr)
@@ -14,9 +15,9 @@ View(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
 
 ## STEP 4. Load sample datasets that are provided as part of a package ----
 #There are none
-
 ## STEP 5. Preview the Loaded Datasets ----
 dim(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
+
 ## STEP 6. Identify the Data Types ----
 sapply(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset, class)
 
@@ -25,7 +26,7 @@ X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq <- X20230412_20230
 cbind(frequency = table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq),
       percentage = prop.table(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq)) *100)
 
-X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq <- X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$YOB
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq <- X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$goal_oriented
 cbind(frequency = table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq),
       percentage = prop.table(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq)) *100)
 
@@ -39,9 +40,9 @@ X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_gender_mode <- names(ta
 ]
 print(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_gender_mode)
 
-X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_YOB_mode <- names(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$YOB))[
-  which(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$YOB) == max(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$YOB)))]
-print(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_YOB_mode)
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_goal_oriented_mode <- names(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$goal_oriented))[
+  which(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$goal_oriented) == max(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$goal_oriented)))]
+print(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_goal_oriented_mode)
 
 X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_take_quizzes_and_use_results_mode <- names(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$take_quizzes_and_use_results))[
   which(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$take_quizzes_and_use_results) == max(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$take_quizzes_and_use_results)))]
@@ -73,13 +74,10 @@ X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_cor <- cor(X20230412_20
 View(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_cor)
 
 ## STEP 16. Perform ANOVA on the dataset
-#Dependent variable: take_quizzes_and_use_results
-#Independent variables: gender, YOB
-#Hypothesis: Age and gender have an effect on how people 
-X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_one_way_anova <- aov( take_quizzes_and_use_results~ gender, data = X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_one_way_anova <- aov( take_quizzes_and_use_results ~ goal_oriented, data = X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
 summary(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_one_way_anova)
 
-X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_two_way_anova <- aov(take_quizzes_and_use_results ~ gender * YOB, data = X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_two_way_anova <- aov( gender ~ goal_oriented * take_quizzes_and_use_results, data = X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
 summary(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_two_way_anova)
 
 ### STEP 17. Create Histograms for Each Numeric Attribute ----
