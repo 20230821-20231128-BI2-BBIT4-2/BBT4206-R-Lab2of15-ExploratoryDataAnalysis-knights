@@ -1,7 +1,7 @@
 Business Intelligence Lab Submission Markdown
 ================
-<Specify your name here>
-<Specify the date when you submitted the lab>
+<135230>
+<23/09/2023>
 
 - [Student Details](#student-details)
 - [Setup Chunk](#setup-chunk)
@@ -14,7 +14,7 @@ Business Intelligence Lab Submission Markdown
 |                                                   |                                                                                            |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------|
 | **Student ID Numbers and Names of Group Members** | \<list one student name and ID per line; you should be between 2 and 5 members per group\> |
-| **BBIT 4.2 Group**                                | \<either group A, B, or C\>                                                                |
+| **BBIT 4.2 Group**                                | \<Group B\>                                                                |
 | **Course Code**                                   | BBT4206                                                                                    |
 | **Course Name**                                   | Business Intelligence II                                                                   |
 | **Program**                                       | Bachelor of Business Information Technology                                                |
