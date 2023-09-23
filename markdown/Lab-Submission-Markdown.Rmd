@@ -174,12 +174,23 @@ missmap(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset, col = c("red",
 
 ```
 
+In this code snippet, two key data visualization tasks are executed.
+First, in Step 21, a correlation plot is created to visualize the pairwise correlations between variables within the dataset.
+The plot, generated using the "ggcorrplot" package, helps identify relationships and dependencies between different data attributes.
+Second, in Step 23, multivariate box and whisker plots are generated to explore the distribution of variables categorized by class labels.
+These plots, created using the featurePlot function, provide a visual representation of how variables are distributed across different classes,
+aiding in understanding data patterns and potential differences between classes. These visualizations enhance data exploration and analysis efforts.
 
+```
+{plot.new(); dev.off()}
 
-```{r Your Fourth Code Chunk}
-# Fill this with other R related code that will be executed when the R markdown
-# file is rendered using knitR
-library(readr)
+if (!is.element("ggcorrplot", installed.packages()[, 1])) {
+  install.packages("ggcorrplot", dependencies = TRUE)
+}
+require("ggcorrplot")
+corrplot(cor(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[, c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99)]), method = "circle")
+
+featurePlot(x = X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[, c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99)], y = X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[, 100], plot = "box")
 ```
 
 
