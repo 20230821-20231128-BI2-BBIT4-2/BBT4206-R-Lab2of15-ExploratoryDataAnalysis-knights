@@ -55,23 +55,62 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, eval = TRUE,
 
 # \<Exploratory Data Analysis on Student Performance\>
 
-Describe the code chunk here:
-This code snippet first lists the files and directories within the library paths used by R, and then it restores the R environment of a project using renv::restore(). The use of list.files on library paths can be useful for inspecting the installed packages or their files within those directories.
+This code first lists the files and directories within the library paths used by R, 
+and then it restores the R environment of a project using renv::restore().
 ```{r Your Second Code Chunk}
-# Fill this with R related code that will be executed when the R markdown file
-# is rendered using knitR
 library(readr)
+.libPaths()
+lapply(.libPaths(), list.files)
+renv::restore()
 ```
 
-Describe the next code chunk here:
-
+This code snippet loads the readr library, reads a CSV file, and then
+opens an interactive viewer to facilitate the exploration and analysis
+of the loaded CSV data.
 ```{r Your Third Code Chunk}
-# Fill this with other R related code that will be executed when the R markdown
-# file is rendered using knitR
+library(readr)
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset <- read_csv("data/20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset.csv")
+View(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
+```
+
+## \<Analysis of the Data\>
+This code calculates the frequency and percentage distribution for three different variables (gender, goal_oriented, and take_quizzes_and_use_results) within the StudentPerformance Dataset.
+For each variable, it first assigns the variable to X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq,
+then calculates the frequency of unique values using the table function, and finally computes the corresponding 
+percentages by dividing the frequencies by the total count and multiplying by 100. The results are stored in two columns, "frequency" and "percentage," and this process is repeated for each of the three variables, allowing one to analyze the distribution of each variable's values in the dataset.
+```{r Your Fourth Code Chunk}
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq <- X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender
+cbind(frequency = table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq),
+      percentage = prop.table(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq)) *100)
+
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq <- X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$goal_oriented
+cbind(frequency = table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq),
+      percentage = prop.table(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq)) *100)
+
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq <- X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$take_quizzes_and_use_results
+cbind(frequency = table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq),
+      percentage = prop.table(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq)) *100)
 library(readr)
 ```
 
-## \<You Can Have a Sub-Title Here\>
+ This code snippet calculates the mode for each of the specified variables within the dataset and then prints the mode values. 
+ The mode represents the most common value for each variable in the dataset.
+```{r Your Fourth Code Chunk}
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_gender_mode <- names(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender))[
+  which(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender) == max(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender)))
+]
+print(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_gender_mode)
+
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_goal_oriented_mode <- names(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$goal_oriented))[
+  which(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$goal_oriented) == max(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$goal_oriented)))]
+print(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_goal_oriented_mode)
+
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_take_quizzes_and_use_results_mode <- names(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$take_quizzes_and_use_results))[
+  which(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$take_quizzes_and_use_results) == max(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$take_quizzes_and_use_results)))]
+
+print(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_take_quizzes_and_use_results_mode)
+library(readr)
+```
 
 ```{r Your Fourth Code Chunk}
 # Fill this with other R related code that will be executed when the R markdown
@@ -79,4 +118,10 @@ library(readr)
 library(readr)
 ```
 
+
+```{r Your Fourth Code Chunk}
+# Fill this with other R related code that will be executed when the R markdown
+# file is rendered using knitR
+library(readr)
+```
 **etc.** as per the lab submission requirements.
