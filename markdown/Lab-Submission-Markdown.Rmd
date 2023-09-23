@@ -174,7 +174,7 @@ missmap(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset, col = c("red",
 
 ```
 
-In this code snippet, two key data visualization tasks are executed.
+In this code, two key data visualization tasks are executed.
 In the first Step, a correlation plot is created to visualize the pairwise correlations between variables within the dataset.
 The plot, generated using the "ggcorrplot" package, helps identify relationships and dependencies between different data attributes.
 In the second step, multivariate box and whisker plots are generated to explore the distribution of variables categorized by class labels.
