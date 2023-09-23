@@ -53,7 +53,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, eval = TRUE,
                       collapse = FALSE, tidy = TRUE)
 ```
 
-# \<Provide an Appropriate Title Here\>
+# \<Exploratory Data Analysis on Student Performance\>
 
 Describe the code chunk here:
 
