@@ -57,17 +57,17 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, eval = TRUE,
 
 This code first lists the files and directories within the library paths used by R, 
 and then it restores the R environment of a project using renv::restore().
-```{r Your Second Code Chunk}
+```
 library(readr)
 .libPaths()
 lapply(.libPaths(), list.files)
 renv::restore()
 ```
 
-This code snippet loads the readr library, reads a CSV file, and then
+This code chunk loads the readr library, reads a CSV file, and then
 opens an interactive viewer to facilitate the exploration and analysis
 of the loaded CSV data.
-```{r Your Third Code Chunk}
+```
 library(readr)
 X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset <- read_csv("data/20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset.csv")
 View(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
@@ -78,7 +78,7 @@ This code calculates the frequency and percentage distribution for three differe
 For each variable, it first assigns the variable to X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq,
 then calculates the frequency of unique values using the table function, and finally computes the corresponding 
 percentages by dividing the frequencies by the total count and multiplying by 100. The results are stored in two columns, "frequency" and "percentage," and this process is repeated for each of the three variables, allowing one to analyze the distribution of each variable's values in the dataset.
-```{r Your Fourth Code Chunk}
+```
 X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq <- X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender
 cbind(frequency = table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq),
       percentage = prop.table(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq)) *100)
@@ -90,7 +90,6 @@ cbind(frequency = table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset
 X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq <- X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$take_quizzes_and_use_results
 cbind(frequency = table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq),
       percentage = prop.table(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq)) *100)
-library(readr)
 ```
 
  This code snippet calculates the mode for each of the specified variables within the dataset and then prints the mode values. 
@@ -109,7 +108,6 @@ X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_take_quizzes_and_use_re
   which(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$take_quizzes_and_use_results) == max(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$take_quizzes_and_use_results)))]
 
 print(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_take_quizzes_and_use_results_mode)
-library(readr)
 ```
 
 ```{r Your Fourth Code Chunk}
@@ -141,6 +139,20 @@ library(readr)
 library(readr)
 ```
 
+
+
+```{r Your Fourth Code Chunk}
+# Fill this with other R related code that will be executed when the R markdown
+# file is rendered using knitR
+library(readr)
+```
+
+
+```{r Your Fourth Code Chunk}
+# Fill this with other R related code that will be executed when the R markdown
+# file is rendered using knitR
+library(readr)
+```
 
 
 ```{r Your Fourth Code Chunk}
