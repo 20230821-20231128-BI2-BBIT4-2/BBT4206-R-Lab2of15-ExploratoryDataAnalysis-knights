@@ -133,7 +133,7 @@ In this code, two crucial steps of data analysis are performed.
 In the first step, the code computes the correlation matrix between
 variables in the dataset X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset,
 providing insights into their linear relationships. The resulting correlation matrix
-is displayed for examination. Second, in the next step, the code conducts a one-way analysis
+is displayed for examination. Second, in the next step, the code conducts both a one-way and two-way analysis
 of variance (ANOVA) to investigate the influence of the goal_oriented variable on the take_quizzes_and_use_results variable
 within the dataset. The ANOVA analysis assesses whether there are statistically significant differences in means across groups defined by goal_oriented,
 with the results summarized to provide statistical insights into these potential differences. These steps collectively aid in understanding data relationships
