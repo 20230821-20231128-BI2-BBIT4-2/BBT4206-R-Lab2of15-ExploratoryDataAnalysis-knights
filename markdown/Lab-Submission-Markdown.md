@@ -13,7 +13,11 @@ Business Intelligence Lab Submission Markdown
 
 |                                                   |                                                                                            |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------|
-| **Student ID Numbers and Names of Group Members** | \<list one student name and ID per line; you should be between 2 and 5 members per group\> |
+| **Student ID Numbers and Names of Group Members** | \<135230 Peter Aringo\> |
+|                                                   |  \<135356 Ann Kigera\>                                                                     |
+|                                                   |  \<122883 Michelle Guya\>                                                                  |
+|                                                   |  \<134834 Kasio Emmanuel\>                                                                 |
+|                                                   |  \<136301 Ian Nyameta\>                                                                    |
 | **BBIT 4.2 Group**                                | \<Group B\>                                                                |
 | **Course Code**                                   | BBT4206                                                                                    |
 | **Course Name**                                   | Business Intelligence II                                                                   |
