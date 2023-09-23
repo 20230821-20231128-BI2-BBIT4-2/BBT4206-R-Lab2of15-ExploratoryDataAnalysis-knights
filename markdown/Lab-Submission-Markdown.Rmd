@@ -129,11 +129,21 @@ X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_cov <- cov(X20230412_20
 View(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_cov)
 ```
 
+In this code, two crucial steps of data analysis are performed. 
+In the first step, the code computes the correlation matrix between
+variables in the dataset X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset,
+providing insights into their linear relationships. The resulting correlation matrix
+is displayed for examination. Second, in the next step, the code conducts a one-way analysis
+of variance (ANOVA) to investigate the influence of the goal_oriented variable on the take_quizzes_and_use_results variable
+within the dataset. The ANOVA analysis assesses whether there are statistically significant differences in means across groups defined by goal_oriented,
+with the results summarized to provide statistical insights into these potential differences. These steps collectively aid in understanding data relationships
+and the impact of specific variables on one another within the dataset.
+```
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_cor <- cor(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset [c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99)])
+View(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_cor)
 
-```{r Your Fourth Code Chunk}
-# Fill this with other R related code that will be executed when the R markdown
-# file is rendered using knitR
-library(readr)
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_one_way_anova <- aov( take_quizzes_and_use_results ~ goal_oriented, data = X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
+summary(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_one_way_anova)
 ```
 
 
