@@ -5,8 +5,7 @@ Business Intelligence Lab Submission Markdown
 
 - [Student Details](#student-details)
 - [Setup Chunk](#setup-chunk)
-- [\<Provide an Appropriate Title
-  Here\>](#provide-an-appropriate-title-here)
+- [\<Exploratory Data Analysis on Student Performance\>](#provide-an-appropriate-title-here)
   - [\<You Can Have a Sub-Title Here\>](#you-can-have-a-sub-title-here)
 
 # Student Details
@@ -46,7 +45,7 @@ More KnitR options are documented here
 <https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html> and
 here <https://yihui.org/knitr/options/>.
 
-# \<Provide an Appropriate Title Here\>
+# \<Exploratory Data Analysis on Student Performance\>
 
 Describe the code chunk here:
 

@@ -56,7 +56,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, eval = TRUE,
 # \<Exploratory Data Analysis on Student Performance\>
 
 Describe the code chunk here:
-
+This code snippet first lists the files and directories within the library paths used by R, and then it restores the R environment of a project using renv::restore(). The use of list.files on library paths can be useful for inspecting the installed packages or their files within those directories.
 ```{r Your Second Code Chunk}
 # Fill this with R related code that will be executed when the R markdown file
 # is rendered using knitR
