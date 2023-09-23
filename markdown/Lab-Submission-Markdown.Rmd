@@ -22,7 +22,7 @@ editor_options:
 |                                                   |  122883 Michelle Guya                                                                      |
 |                                                   |  134834 Kasio Emmanuel                                                                     |
 |                                                   |  136301 Ian Nyameta                                                                        |
-| **BBIT 4.2 Group**                                |       Group B                                                                              |
+| **BBIT 4.2 Group**                                |  Group B                                                                                   |
 | **Course Code**                                   | BBT4206                                                                                    |
 | **Course Name**                                   | Business Intelligence II                                                                   |
 | **Program**                                       | Bachelor of Business Information Technology                                                |
@@ -53,7 +53,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, eval = TRUE,
                       collapse = FALSE, tidy = TRUE)
 ```
 
-# \<Exploratory Data Analysis on Student Performance\>
+# Exploratory Data Analysis on Student Performance
 
 This code first lists the files and directories within the library paths used by R, 
 and then it restores the R environment of a project using renv::restore().
@@ -73,7 +73,7 @@ X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset <- read_csv("data/20230
 View(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
 ```
 
-## \<Analysis of the Data\>
+## Analysis of the Data
 This code calculates the frequency and percentage distribution for three different variables (gender, goal_oriented, and take_quizzes_and_use_results) within the StudentPerformance Dataset.
 For each variable, it first assigns the variable to X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq,
 then calculates the frequency of unique values using the table function, and finally computes the corresponding 
