@@ -96,7 +96,7 @@ library(readr)
  This code snippet calculates the mode for each of the specified variables within the dataset and then prints the mode values. 
  The mode represents the most common value for each variable in the dataset.
 ```{r Your Fourth Code Chunk}
-X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_gender_mode <- names(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender))[
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_gender_mode <- names(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender))[ # nolint
   which(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender) == max(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender)))
 ]
 print(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_gender_mode)
@@ -117,6 +117,30 @@ library(readr)
 # file is rendered using knitR
 library(readr)
 ```
+
+
+```{r Your Fourth Code Chunk}
+# Fill this with other R related code that will be executed when the R markdown
+# file is rendered using knitR
+library(readr)
+```
+
+
+
+```{r Your Fourth Code Chunk}
+# Fill this with other R related code that will be executed when the R markdown
+# file is rendered using knitR
+library(readr)
+```
+
+
+
+```{r Your Fourth Code Chunk}
+# Fill this with other R related code that will be executed when the R markdown
+# file is rendered using knitR
+library(readr)
+```
+
 
 
 ```{r Your Fourth Code Chunk}
