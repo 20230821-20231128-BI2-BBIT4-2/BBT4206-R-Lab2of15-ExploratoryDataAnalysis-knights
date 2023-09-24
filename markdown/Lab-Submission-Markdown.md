@@ -47,7 +47,6 @@ here <https://yihui.org/knitr/options/>.
 
 # Exploratory Data Analysis on Student Performance
 
-Describe the code chunk here:
 This code first lists the files and directories within the library paths used by R, 
 and then it restores the R environment of a project using renv::restore().
 
@@ -58,7 +57,6 @@ lapply(.libPaths(), list.files)
 renv::restore()
 ```
 
-Describe the next code chunk here:
 This code chunk loads the readr library, reads a CSV file, and then
 opens an interactive viewer to facilitate the exploration and analysis
 of the loaded CSV data.
