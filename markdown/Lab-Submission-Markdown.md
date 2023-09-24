@@ -45,30 +45,139 @@ More KnitR options are documented here
 <https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html> and
 here <https://yihui.org/knitr/options/>.
 
-# \<Exploratory Data Analysis on Student Performance\>
+# Exploratory Data Analysis on Student Performance
 
 Describe the code chunk here:
+This code first lists the files and directories within the library paths used by R, 
+and then it restores the R environment of a project using renv::restore().
 
-``` r
-# Fill this with R related code that will be executed when the R markdown file
-# is rendered using knitR
+``` 
 library(readr)
+.libPaths()
+lapply(.libPaths(), list.files)
+renv::restore()
 ```
 
 Describe the next code chunk here:
-
-``` r
-# Fill this with other R related code that will be executed when the R markdown
-# file is rendered using knitR
+This code chunk loads the readr library, reads a CSV file, and then
+opens an interactive viewer to facilitate the exploration and analysis
+of the loaded CSV data.
+``` 
 library(readr)
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset <- read_csv("data/20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset.csv")
+View(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
 ```
 
-## \<You Can Have a Sub-Title Here\>
+## Analysis of the Data
 
-``` r
-# Fill this with other R related code that will be executed when the R markdown
-# file is rendered using knitR
-library(readr)
+This code calculates the frequency and percentage distribution for three different variables (gender, goal_oriented, and take_quizzes_and_use_results) within the StudentPerformance Dataset. For each variable, it first assigns the variable to X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq,then calculates the frequency of unique values using the table function, and finally computes the corresponding percentages by dividing the frequencies by the total count and multiplying by 100. The results are stored in two columns, "frequency" and "percentage," and this process is repeated for each of the three variables, allowing one to analyze the distribution of each variable's values in the dataset.
+``` 
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq <- X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender
+cbind(frequency = table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq),
+      percentage = prop.table(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq)) *100)
+
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq <- X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$goal_oriented
+cbind(frequency = table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq),
+      percentage = prop.table(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq)) *100)
+
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq <- X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$take_quizzes_and_use_results
+cbind(frequency = table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq),
+      percentage = prop.table(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq)) *100)
 ```
 
-**etc.** as per the lab submission requirements.
+
+This code snippet calculates the mode for each of the specified variables within the dataset and then prints the mode values. 
+The mode represents the most common value for each variable in the dataset.
+```
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_gender_mode <- names(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender))[ # nolint
+  which(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender) == max(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender)))
+]
+print(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_gender_mode)
+
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_goal_oriented_mode <- names(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$goal_oriented))[
+  which(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$goal_oriented) == max(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$goal_oriented)))]
+print(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_goal_oriented_mode)
+
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_take_quizzes_and_use_results_mode <- names(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$take_quizzes_and_use_results))[
+  which(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$take_quizzes_and_use_results) == max(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$take_quizzes_and_use_results)))]
+
+print(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_take_quizzes_and_use_results_mode)
+```
+
+This code snippet conducts a series of statistical analyses on specific columns within the dataset StudentPerformanceDataset. In the first two steps, it calculates the standard deviation and variance, respectively, for a subset of columns (columns 2 to 99) using the sapply function. Step 3 measures kurtosis, indicating the frequency of outliers, and Step 4 measures skewness, indicating data distribution asymmetry, again for the same subset of columns. Finally, in Step 5, the code computes the covariance matrix between the selected columns and stores it in X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_cov, which is then displayed in an interactive viewer. These calculations and measurements provide valuable insights into the distribution, spread, and relationships of the data within the specified columns, aiding in data exploration and analysis.
+```
+sapply(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[, c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99)], sd)
+
+sapply(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[, c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99)], var)
+
+sapply(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset [c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99)],kurtosis, type=2)
+
+sapply(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset [c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99)],skewness, type=2)
+
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_cov <- cov(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset [c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99)])
+View(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_cov)
+```
+
+In this code, two crucial steps of data analysis are performed. 
+In the first step, the code computes the correlation matrix between
+variables in the dataset X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset,
+providing insights into their linear relationships. The resulting correlation matrix
+is displayed for examination. Second, in the next step, the code conducts both a one-way and two-way analysis
+of variance (ANOVA) to investigate the influence of the goal_oriented variable on the take_quizzes_and_use_results variable
+within the dataset. The ANOVA analysis assesses whether there are statistically significant differences in means across groups defined by goal_oriented,
+with the results summarized to provide statistical insights into these potential differences. These steps collectively aid in understanding data relationships
+and the impact of specific variables on one another within the dataset.
+```
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_cor <- cor(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset [c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99)])
+View(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_cor)
+
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_one_way_anova <- aov( take_quizzes_and_use_results ~ goal_oriented, data = X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
+summary(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_one_way_anova)
+
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_two_way_anova <- aov( gender ~ goal_oriented * take_quizzes_and_use_results, data = X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
+summary(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_two_way_anova)
+
+```
+
+In this code segment, two key data visualization tasks are executed.
+In the first step, bar plots are generated for each categorical attribute
+within the dataset X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset.
+These plots display the frequency distribution of unique values for each attribute,
+aiding in understanding the distribution of categorical data. In the second step, 
+a missingness map is created to identify missing data patterns within the same dataset.
+The map, generated using the "Amelia" package, highlights missing data in red, facilitating
+the assessment of data completeness and missing value patterns. These visualizations contribute
+to data exploration and quality assessment.
+```
+par(mfrow = c(1, 3))
+for (i in 1:3) {
+  barplot(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[, i]), main = names(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)[i])
+}
+
+if (!is.element("Amelia", installed.packages()[, 1])) {
+  install.packages("Amelia", dependencies = TRUE)
+}
+require("Amelia")
+
+missmap(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset, col = c("red", "grey"), legend = TRUE)
+
+```
+
+In this code, two key data visualization tasks are executed.
+In the first Step, a correlation plot is created to visualize the pairwise correlations between variables within the dataset.
+The plot, generated using the "ggcorrplot" package, helps identify relationships and dependencies between different data attributes.
+In the second step, multivariate box and whisker plots are generated to explore the distribution of variables categorized by class labels.
+These plots, created using the featurePlot function, provide a visual representation of how variables are distributed across different classes,
+aiding in understanding data patterns and potential differences between classes. These visualizations enhance data exploration and analysis efforts.
+
+```
+{plot.new(); dev.off()}
+
+if (!is.element("ggcorrplot", installed.packages()[, 1])) {
+  install.packages("ggcorrplot", dependencies = TRUE)
+}
+require("ggcorrplot")
+corrplot(cor(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[, c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99)]), method = "circle")
+
+featurePlot(x = X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[, c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99)], y = X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[, 100], plot = "box")
+```

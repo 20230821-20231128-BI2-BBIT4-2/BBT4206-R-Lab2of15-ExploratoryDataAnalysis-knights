@@ -92,8 +92,8 @@ cbind(frequency = table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset
       percentage = prop.table(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_freq)) *100)
 ```
 
- This code snippet calculates the mode for each of the specified variables within the dataset and then prints the mode values. 
- The mode represents the most common value for each variable in the dataset.
+This code snippet calculates the mode for each of the specified variables within the dataset and then prints the mode values. 
+The mode represents the most common value for each variable in the dataset.
 ```
 X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_gender_mode <- names(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender))[ # nolint
   which(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender) == max(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender)))
